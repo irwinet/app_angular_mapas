@@ -1,15 +1,15 @@
 <mat-card>
     <mat-card-title>Mapa</mat-card-title>
     <mat-card-content>
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
-            <agm-marker [latitude]="lat" [longitude]="lng">
+        <agm-map (mapClick)="agregarMarcador($event)" [latitude]="lat" [longitude]="lng" [zoom]="15">
+            <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lng">
                 <agm-info-window>
-                    <strong>Titulo</strong>
+                    <strong>{{ marcador.titulo }}</strong>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, unde? Explicabo, voluptas illo nulla necessitatibus itaque repudiandae et vel nemo impedit voluptate alias ea rerum autem vero, aspernatur error cupiditate!
+                        {{ marcador.desc }}
                     </p>
                     <div>
-                        <button mat-raised-button color="primary">Editar</button>
+                        <button mat-raised-button color="primary">Editar</button> &nbsp;
                         <button mat-raised-button color="warn">Borrar</button>
                     </div>
                 </agm-info-window>
